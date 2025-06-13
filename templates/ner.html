@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>NER Viewer - FinChat</title></head>
+<body>
+    <h2>🧠 Named Entity Recognition</h2>
+    <form method="get">
+        <label>Select Section:</label>
+        <select name="section" onchange="this.form.submit()">
+            {% for title, page in sections %}
+                <option value="{{ title }}" {% if title == selected %}selected{% endif %}>{{ title }} (Page {{ page }})</option>
+            {% endfor %}
+        </select>
+    </form>
+    {% if ner_html %}
+        <h3>Entities</h3>
+        {{ ner_html|safe }}
+    {% endif %}
+    <br>
+    <a href="{{ url_for('structure') }}">Back to Structure</a> |
+    <a href="{{ url_for('finchat') }}">Go to FinChat</a> |
+    <a href="{{ url_for('trends') }}">Go to Trends</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>FinChat - Ask a Question</title></head>
+<body>
+    <h2>💬 FinChat - Ask a Question</h2>
+    <form method="post">
+        <label>Start Page:</label>
+        <input type="number" name="start_page" value="1" min="1"><br><br>
+        <label>End Page:</label>
+        <input type="number" name="end_page" value="5" min="1"><br><br>
+        <label>Question:</label><br>
+        <input type="text" name="question" size="80"><br><br>
+        <input type="submit" value="Ask">
+    </form>
+
+    {% if answer %}
+        <h3>Answer</h3>
+        <pre>{{ answer }}</pre>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('structure') }}">Back to Structure</a> |
+    <a href="{{ url_for('ner') }}">Go to NER</a> |
+    <a href="{{ url_for('trends') }}">Go to Trends</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+</body>
+</html>

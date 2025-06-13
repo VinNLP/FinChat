@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>FinChat - Structure Detection</title></head>
+<body>
+    <h2>📄 FinChat - Structure Detection</h2>
+    <form method="post" enctype="multipart/form-data">
+        <label>Choose a PDF:</label>
+        <input type="file" name="pdf_file"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if result %}
+        <p><strong>{{ result }}</strong></p>
+    {% endif %}
+
+    {% if section_list %}
+      <h3>📑 Extracted Structure</h3>
+      <table border="1" style="border-collapse: collapse;">
+        <tr><th>Section Title</th><th>Page Number</th></tr>
+        {% for title, page in section_list %}
+          <tr>
+            <td>{{ title }}</td>
+            <td>{{ page }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('finchat') }}">Go to FinChat</a> |
+    <a href="{{ url_for('ner') }}">Go to NER</a> |
+    <a href="{{ url_for('trends') }}">Go to Trends</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+
+	
+</body>
+</html>

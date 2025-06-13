@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyword Trends - FinChat</title>
+</head>
+<body>
+    <h2>📈 Keyword Frequency Trends</h2>
+
+	<form method="POST" enctype="multipart/form-data">
+		<input type="text" name="keyword" placeholder="Enter keyword" />
+		<button type="submit" name="action" value="add">Add Keyword</button>
+
+		<button type="submit" name="action" value="clear">Clear Chart</button>
+
+
+		<br><br>
+		<input type="file" name="txt_file" />
+		<button type="submit" name="action" value="upload">Upload Keywords</button>
+	</form>
+
+
+    {% if msg %}
+        <p>{{ msg }}</p>
+    {% endif %}
+
+	{% if chart %}
+		<h3>Keyword Frequency Chart</h3>
+		<div id="chart-container">
+			{{ chart|safe }}
+		</div>
+	{% endif %}
+
+
+    {% if table_html %}
+        <h3>Keyword Frequency Table</h3>
+        {{ table_html | safe }}
+    {% endif %}
+
+    <br><br>
+    <a href="{{ url_for('structure') }}">🔙 Back to Structure</a> |
+    <a href="{{ url_for('finchat') }}">💬 Go to FinChat</a> |
+    <a href="{{ url_for('ner') }}">🧠 Go to NER</a> |
+    <a href="{{ url_for('logout') }}">🚪 Logout</a>
+</body>
+</html>
